@@ -2,3 +2,4 @@
 .scannerwork/
 .vscode/
 /bin/
+/target/

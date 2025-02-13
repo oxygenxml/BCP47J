@@ -2,19 +2,65 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.oxygenxml</groupId>
   <artifactId>BCP47J</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   
   <dependencies>
-	<dependency>
-      <groupId>com.oxygenxml</groupId>
-      <artifactId>xmljava</artifactId>
-      <version>2.1.0</version>
-      <scope>system</scope>
-      <systemPath>${basedir}/lib/xmljava.jar</systemPath>
-    </dependency>
+	  <dependency>
+          <groupId>com.oxygenxml</groupId>
+          <artifactId>oxygen-patched-xmljava</artifactId>
+           <version>2.1.0-SNAPSHOT</version>
+      </dependency>  
   </dependencies>
   
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.release>11</maven.compiler.release>
+    <target.jre.version>11</target.jre.version>
+  </properties>
 
+<profiles>
+	  <profile>
+      <id>package-include-manifest</id>
+      <activation>
+        <file>
+          <missing>package-skip-manifest.xml</missing>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+              <archive>
+                <!-- Use the original Manifest file from the patched artifact. -->
+                <manifestFile>
+                  ${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+              </archive>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>package-skip-manifest</id>
+      <activation>
+        <file>
+          <exists>package-skip-manifest.xml</exists>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+  
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>
