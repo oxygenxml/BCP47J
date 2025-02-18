@@ -15,13 +15,6 @@
            <version>2.1.0-SNAPSHOT</version>
       </dependency>  
   </dependencies>
-  
-  <properties>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
-    <maven.compiler.release>11</maven.compiler.release>
-    <target.jre.version>11</target.jre.version>
-  </properties>
 
 <profiles>
 	  <profile>
