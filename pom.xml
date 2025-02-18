@@ -15,6 +15,13 @@
            <version>2.1.0-SNAPSHOT</version>
       </dependency>  
   </dependencies>
+  
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.release>17</maven.compiler.release>
+    <target.jre.version>17</target.jre.version>
+  </properties>
 
 <profiles>
 	  <profile>
@@ -69,24 +76,20 @@
       </resource>
     </resources>
     <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <release>17</release>
-        </configuration>
-      </plugin>
-      
-      <!-- Add the Maven Jar Plugin -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.2.0</version>
-        <configuration>
-          <outputDirectory>${project.basedir}/lib</outputDirectory> <!-- This sets the lib directory -->
-          <finalName>${project.artifactId}-${project.version}</finalName> <!-- Name the JAR file -->
-        </configuration>
-      </plugin>
-    </plugins>
+  <!-- Maven Compiler Plugin -->
+  <plugin>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+      <release>17</release> 
+    </configuration>
+  </plugin>
+
+  <!-- Dependency Check Plugin -->
+  <plugin>
+    <groupId>org.owasp</groupId>
+    <artifactId>dependency-check-maven</artifactId>
+  </plugin>
+</plugins>
+
   </build>
 </project>
