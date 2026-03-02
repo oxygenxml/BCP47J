@@ -1,5 +1,6 @@
 .DS_Store
 .scannerwork/
 .vscode/
-/bin/
-/target/
+.gradle/
+bin/
+build/
