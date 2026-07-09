@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **This repository is archived.** It preserves the last open-source version before the license change. No further updates will be pushed here due to licensing restrictions.
+
 # BCP47J
 
 A library written in Java for handling Language Tags in compliance with [BCP47](https://www.ietf.org/rfc/bcp/bcp47.txt).
